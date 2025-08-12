@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ business.name }} - Premium Mobile Car Wash Dubai</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info div {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .services {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .service-category {
+            margin-bottom: 3rem;
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #667eea;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        
+        .savings {
+            background: #d4edda;
+            color: #155724;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .duration {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .features li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+        
+        .contact-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .contact-info { flex-direction: column; }
+            .service-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="hero">
+                <h1>🚗 {{ business.name }}</h1>
+                <p>{{ business.location }}'s Premium Mobile Car Wash Service</p>
+                <div class="contact-info">
+                    <div>
+                        <strong>📞 {{ business.phone }}</strong><br>
+                        Call us now!
+                    </div>
+                    <div>
+                        <strong>⭐ {{ business.rating }}</strong><br>
+                        {{ business.customers }} Happy Customers
+                    </div>
+                    <div>
+                        <strong>🏆 {{ business.experience }}</strong><br>
+                        Professional Service
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            
+            <!-- Premium Wash Services -->
+            <div class="service-category">
+                <h3 class="category-title">🌟 Premium Wash Services</h3>
+                <div class="service-grid">
+                    {% for service_id, service in services.premium_wash.items() %}
+                    <div class="service-card">
+                        <h3>{{ service.name }}</h3>
+                        <div class="price">AED {{ service.price }}</div>
+                        <div class="duration">⏱️ {{ service.duration }}</div>
+                        <ul class="features">
+                            {% for feature in service.features %}
+                            <li>{{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                        <button class="btn" onclick="selectService('{{ service_id }}', '{{ service.name }}')">
+                            Book Now
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Monthly Packages -->
+            <div class="service-category">
+                <h3 class="category-title">📅 Monthly Packages</h3>
+                <div class="service-grid">
+                    {% for service_id, service in services.monthly_packages.items() %}
+                    <div class="service-card">
+                        <h3>{{ service.name }}</h3>
+                        <div class="price">AED {{ service.price }}</div>
+                        {% if service.savings %}
+                        <div class="savings">💰 Save AED {{ service.savings }}!</div>
+                        {% endif %}
+                        <div class="duration">📦 {{ service.duration }}</div>
+                        <ul class="features">
+                            {% for feature in service.features %}
+                            <li>{{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                        <button class="btn" onclick="selectService('{{ service_id }}', '{{ service.name }}')">
+                            Subscribe Now
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Yearly Packages -->
+            <div class="service-category">
+                <h3 class="category-title">🎯 Annual Plans - Best Value!</h3>
+                <div class="service-grid">
+                    {% for service_id, service in services.yearly_packages.items() %}
+                    <div class="service-card">
+                        <h3>{{ service.name }}</h3>
+                        <div class="price">AED {{ service.price }}</div>
+                        {% if service.savings %}
+                        <div class="savings">🎉 SAVE AED {{ service.savings }}!</div>
+                        {% endif %}
+                        <div class="duration">📅 {{ service.duration }}</div>
+                        <ul class="features">
+                            {% for feature in service.features %}
+                            <li>{{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                        <button class="btn" onclick="selectService('{{ service_id }}', '{{ service.name }}')">
+                            Get Annual Plan
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Book Your Service Now</h2>
+            <div class="contact-form">
+                <div class="alert alert-success" id="successAlert"></div>
+                <div class="alert alert-error" id="errorAlert"></div>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+971 50 123 4567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Select Service *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Choose a service...</option>
+                            <optgroup label="Premium Wash Services">
+                                {% for service_id, service in services.premium_wash.items() %}
+                                <option value="{{ service_id }}">{{ service.name }} - AED {{ service.price }}</option>
+                                {% endfor %}
+                            </optgroup>
+                            <optgroup label="Monthly Packages">
+                                {% for service_id, service in services.monthly_packages.items() %}
+                                <option value="{{ service_id }}">{{ service.name }} - AED {{ service.price }}</option>
+                                {% endfor %}
+                            </optgroup>
+                            <optgroup label="Annual Plans">
+                                {% for service_id, service in services.yearly_packages.items() %}
+                                <option value="{{ service_id }}">{{ service.name }} - AED {{ service.price }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" placeholder="Any special requirements or preferred time..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">
+                        🚗 Book My Service Now
+                    </button>
+                </form>
+                
+                <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: #e3f2fd; border-radius: 8px;">
+                    <h4>📞 Prefer to call?</h4>
+                    <p><strong>{{ business.phone }}</strong></p>
+                    <p>Available 7 days a week, 8 AM - 8 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 {{ business.name }}. All rights reserved.</p>
+            <p>{{ business.location }} | {{ business.phone }} | {{ business.email }}</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function selectService(serviceId, serviceName) {
+            document.getElementById('service').value = serviceId;
+            document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });
+            
+            // Highlight the selected service
+            const allCards = document.querySelectorAll('.service-card');
+            allCards.forEach(card => card.style.borderColor = 'transparent');
+            
+            event.target.closest('.service-card').style.borderColor = '#28a745';
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '🔄 Processing...';
+            submitBtn.disabled = true;
+            
+            // Hide alerts
+            document.getElementById('successAlert').style.display = 'none';
+            document.getElementById('errorAlert').style.display = 'none';
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    document.getElementById('successAlert').innerHTML = 
+                        `<strong>✅ Booking Confirmed!</strong><br>
+                         Booking ID: ${result.booking_id}<br>
+                         Service: ${result.service}<br>
+                         Price: ${result.price}<br>
+                         ${result.message}`;
+                    document.getElementById('successAlert').style.display = 'block';
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    
+                    // Reset card borders
+                    document.querySelectorAll('.service-card').forEach(card => {
+                        card.style.borderColor = 'transparent';
+                    });
+                } else {
+                    document.getElementById('errorAlert').innerHTML = 
+                        `<strong>❌ Error:</strong> ${result.message}`;
+                    document.getElementById('errorAlert').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('errorAlert').innerHTML = 
+                    `<strong>❌ Error:</strong> Failed to submit booking. Please try again or call us directly.`;
+                document.getElementById('errorAlert').style.display = 'block';
+                console.error('Error:', error);
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+=== MAC MOBILE CAR WASH - BOOKING RECORDS ===
+Created: 2025-08-12 21:03:43
+============================================================
+
+
+============================================================
+BOOKING ID: MAC20250812211158
+DATE: 2025-08-12T21:11:58.958461
+CUSTOMER: Balguri Mukesh
+PHONE: +919704425295
+EMAIL: mukeshraobalguri@gmail.com
+SERVICE: Blue Package
+PRICE: AED 240
+MESSAGE: 
+EMAIL SENT: False
+============================================================
+
+============================================================
+BOOKING ID: MAC20250812211248
+DATE: 2025-08-12T21:12:48.838173
+CUSTOMER: Midhilesh Balguri
+PHONE: +918008323218
+EMAIL: balgurimidilesh@gmail.com
+SERVICE: Gold Wash
+PRICE: AED 75
+MESSAGE: ASAP!
+EMAIL SENT: False
+============================================================
